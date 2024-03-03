@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Tamagotchi</title>
+
+    <style>
+        /* Estilos para las imágenes */
+        img {
+            max-width: 300px;
+        }
+
+        /* Estilos para el botón de alimentar */
+        button {
+            display: block;
+            margin-top: 10px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <h1>Mi Tamagotchi - Actividad 3</h1>
+    <img id="tamagotchi" src="img/tamagotchi-normal.jpg" alt="Tamagotchi">
+    <button onclick="alimentar()">Alimentar</button>
+    <p id="dias">Días desde la última comida: 0</p>
+
+    <script>
+
+        let estado = 'normal';
+        let diasSinComida = 0;
+
+        // Función para alimentar
+        function alimentar() {
+            estado = 'alimentado';
+            diasSinComida = 0;
+            document.getElementById('tamagotchi').src = "img/tamagotchi-fed.jpg";
+            document.getElementById('dias').textContent = `Días desde la última comida: ${diasSinComida}`;
+        }
+
+        // Función para actualizar el estado
+        function actualizarEstado() {
+            if (estado === 'normal') {
+                diasSinComida++;
+                document.getElementById('dias').textContent = `Días desde la última comida: ${diasSinComida}`;
+                if (diasSinComida >= 3) {
+                    estado = 'muerto';
+                    document.getElementById('tamagotchi').src = "img/tamagotchi-dead.jpg";
+                } else if (diasSinComida >= 1) {
+                    estado = 'hambriento';
+                    document.getElementById('tamagotchi').src = "img/tamagotchi-hungry.jpg";
+                }
+            }
+        }
+
+        // Actualizar el estado cada día
+        setInterval(actualizarEstado, 1000 * 60 * 60 * 24); // Esos número significan 24 horas
+
+    </script>
+
+</body>
+
+</html>
