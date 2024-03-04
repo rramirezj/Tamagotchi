@@ -22,7 +22,7 @@ function dormir() {
   document.getElementById("tamagotchi").src = "img/tamagotchi-sleep.jpg";
 }
 
-// Función para actualizar el estado del Tamagotchi
+// Función para ACTUALIZAR el ESTADO del Tamagotchi
 function actualizarEstado() {
   if (estado === "normal") {
     diasSinComida++;
@@ -47,7 +47,7 @@ function actualizarEstado() {
 // Función para actualizar el estado cada día
 setInterval(actualizarEstado, 1000 * 60 * 60 * 24); // Esos número significan 24 horas
 
-// Función para actualizar las barras de comida, sueño y salud
+// Función para ACTUALIZAR las BARRAS de comida, sueño y salud
 function actualizarBarras() {
   const barraComida = document.getElementById("comida");
   const barraSueno = document.getElementById("sueno");
@@ -56,7 +56,7 @@ function actualizarBarras() {
   const porcentajeComida = 100 - diasSinComida * 33.33; // 1 día sin comida reduce un tercio de la comida
   const porcentajeSueno = 100 - diasSinSueno * 33.33; // 1 día sin sueño reduce un tercio del sueño
 
-  // Función para calcular la salud basada en la comida y el sueño
+  // Función para CALCULAR la SALUD basada en la comida y el sueño
   const porcentajeSalud = (porcentajeComida + porcentajeSueno) / 2; // La salud es el promedio de la comida y el sueño
 
   barraComida.style.width = `${porcentajeComida}%`;
